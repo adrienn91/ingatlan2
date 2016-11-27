@@ -1,0 +1,43 @@
+{% extends 'layout' %}
+
+{% block content %}
+<div class="col-md-15">
+<h1>Képek feltöltése</h1>
+
+<div class="panel panel-default">
+  <div class="panel panel-danger">Képek feltöltése</div>
+   <div class="panel-body">
+    <span>Browse</span>
+     {{ form.open({ action: 'FileController.store', files: true}) }}
+      {{ csrfField }}
+      <div class="field">
+        {{ form.file('file') }}
+      </div>
+
+    {{ form.button('Submit', 'submit') }}
+
+  {{ form.close() }}
+</div>
+</div>
+</div>
+
+<h1>Eddig feltöltött képek:</h1>
+<div class="row">
+  {% for image in images %}
+  <div class="col-md-5 col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+         <a class="btn btn-primary" href="/advertisments/create/upload/file/{{image.id}}/delete" role="button">Töröl</a>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">
+     <img src="{{ image.image }}" alt="image" width="400" height="200">
+        </li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<a class="btn btn-info" href="/" role="button">Jóváhagyás</a>
+</div>
+{% endblock %}
