@@ -27,18 +27,18 @@ Az ingatlanhirdetéseket kezelő alkalmazés célja, hogy könnyedén és gyorsa
 -	Felszanáló: A vendég szerepkörön túl saját hirdetés feladására és hirdetésfigyelésre jogosult
 
 ## Használati eset diagram
-![alt tag](https://github.com/adrienn91/ingatlanhirdetes/blob/master/Use_Case.png)
+![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/Use_Case.png)
 
 ## Folyamatok meghatározása
 
 
 - Bejelentkezés:
 
-![alt tag](https://github.com/adrienn91/ingatlanhirdetes/blob/master/bejelentkezes.png)
+![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/bejelentkezes.png)
 
 - Új hirdetés feladása
 
-![alt tag](https://github.com/adrienn91/ingatlanhirdetes/blob/master/uj_hirdetes.png)
+![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/uj_hirdetes.png)
 
 ## Oldaltérkép
 ### Publikus
@@ -81,23 +81,39 @@ Az ingatlanhirdetéseket kezelő alkalmazés célja, hogy könnyedén és gyorsa
 
 - Főképernyő:
 
-![alt tag](https://github.com/adrienn91/ingatlanhirdetes/blob/master/fokepernyo.png)
+![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/fokép.png)
 
 - Ingatlan megtekintése:
 
-![alt tag](https://github.com/adrienn91/ingatlanhirdetes/blob/master/ingatlan_megtekintese.png)
+![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/reszletek.png)
 
 - Új hirdetés feltöltése:
 
-![alt tag](https://github.com/adrienn91/ingatlanhirdetes/blob/master/uj_hirdetes_2.png)
+![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/uj.png)
 
-- Hirdetésfigyelő beállítása:
+- Regisztráció:
 
-![alt tag](https://github.com/adrienn91/ingatlanhirdetes/blob/master/hirdetesfigyelo.png)
+![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/reg.png)
+
+- Belépés:
+
+![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/belepes.png)
+
+- Keresés:
+
+![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/kereses.png)
+
+- Szerkesztés
+
+![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/szerkesztes.png)
+
+- Képek hozzáadása:
+
+![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/kep.png)
 
 ## Adatmodell
 
-![alt tag](https://github.com/adrienn91/ingatlanhirdetes/blob/master/database.png)
+![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/database.png)
 
 # Implementáció
 
