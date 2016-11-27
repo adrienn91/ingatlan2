@@ -31,7 +31,6 @@ Az ingatlanhirdetéseket kezelő alkalmazés célja, hogy könnyedén és gyorsa
 
 ## Folyamatok meghatározása
 
-
 - Bejelentkezés:
 
 ![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/bejelentkezes.png)
@@ -77,7 +76,6 @@ Az ingatlanhirdetéseket kezelő alkalmazés célja, hogy könnyedén és gyorsa
 - GET /myFavorites: kedvenc hirdetéseim megtekintése
 
 ## Oldalvázlatok:
-
 
 - Főképernyő:
 
