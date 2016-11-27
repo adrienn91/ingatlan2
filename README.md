@@ -27,7 +27,7 @@ Az ingatlanhirdetéseket kezelő alkalmazés célja, hogy könnyedén és gyorsa
 -	Felszanáló: A vendég szerepkörön túl saját hirdetés feladására és hirdetésfigyelésre jogosult
 
 ## Használati eset diagram
-![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/Use_Case.png)
+![alt tag](https://github.com/adrienn91/ingatlan2/blob/master/images/usecase.png)
 
 ## Folyamatok meghatározása
 
