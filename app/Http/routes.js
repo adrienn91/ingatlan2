@@ -1,12 +1,6 @@
 'use strict'
 
 const Route = use('Route')
-
-// Route.on('/').render('welcome')
-// Route.on('/').render('main')
-// Route.get('/', function * (request, response) {
-//     yield response.sendView('main');
-// });
 Route.get('/', 'PropertyController.index')
 Route.get('/advertisments/create', 'PropertyController.create').middleware('auth')
 Route.post('/advertisments/create', 'PropertyController.doCreate').middleware('auth')
@@ -27,3 +21,8 @@ Route.post('/register', 'UserController.doRegister')
 Route.get('/login', 'UserController.login')
 Route.post('/login', 'UserController.doLogin')
 Route.get('/logout', 'UserController.doLogout')
+
+Route.group('ajax', function () {
+  Route.delete('/advertisments/:id/delete', 'PropertyController.ajaxDelete').middleware('auth')  
+  Route.post('/login', 'UserController.ajaxLogin')
+}).prefix('/ajax')

@@ -1,5 +1,9 @@
 {% extends 'layout' %}
 
+{% block scripts %}
+<script src="/scripts/delete.js"></script>
+{% endblock %}
+
 {% block content %}
 
 <h2>Részletes Leírás</h2>
@@ -41,12 +45,24 @@
 
 
 {% if currentUser.id == property.user_id %}
+{{ csrfField | safe }}
 <a class="btn btn-primary" href="/advertisments/{{property.id}}/edit" role="button">Szerkeszt</a>
-<a class="btn btn-danger" href="/advertisments/{{property.id}}/delete" role="button">Töröl</a>
-
-{% endif %}
-
+<a class="btn btn-danger" id="btnDelete" href="/advertisments/{{property.id}}/delete" role="button">Töröl</a>
+<span class="help-block"></span>
+<div class="modal fade confirm-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            Biztosan törölni szeretnéd?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success modal-ok" data-dismiss="modal">OK</button>
+            <button type="button" class="btn btn-danger modal-cancel" data-dismiss="modal">Mégse</button>
+        </div>
+        </div>
+    </div>
+</div>
 <a class="btn btn-info" href="/advertisments/{{property.id}}/favorite" role="button">
  <span class=" glyphicon glyphicon-star"></span> Kedvencnek jelölöm</a>
-
+{% endif %}
 {% endblock %}

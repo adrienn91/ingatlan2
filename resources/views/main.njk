@@ -1,10 +1,24 @@
 {% extends 'layout' %}
-
+{% block scripts %}
+<script src="/scripts/popup.js"></script>
+<script src="/scripts/autosuggest.js"></script>
+{% endblock %}
 {% block content %}
 
 <h2>Kiemelt hirdetések</h2>
 
 <div class="row">
+  <form action="/advertisments" method="GET" style="position: relative;">
+    {{ csrfField | safe }}
+    <div class="input-group search-box">
+      <input type="text" class="form-control recipe-search" placeholder="Keresés..." name="propertyAddress" autocomplete="off">
+      <span class="input-group-btn">
+        <button class="btn btn-info" type="submit">Mehet!</button>
+      </span>
+    </div>
+    
+  </form>
+
   <div class="panel panel-default">
     <div class="panel-heading">Kiemelt hirdetésink</div>
       <div class="panel-body">

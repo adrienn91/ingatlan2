@@ -34,7 +34,6 @@ class PropertyController {
     const id = request.param('id')
     const property = yield Property.find(id)
     
-    
     if (!property) {
       response.notFound('Property does not exist')
       return
@@ -179,7 +178,7 @@ class PropertyController {
     const id = request.param('id')
     const property = yield Property.find(id)
     const favorites = yield Favorite.query().where('property_id', id).fetch()
-    const adType = yield AdType.query().where('property_id', id).fetch()
+    const adTypes = yield AdType.query().where('property_id', id).fetch()
     const images = yield Image.query().where('property_id', id).fetch()
     if (!property) {
       response.notFound('Property does not exist')
@@ -190,12 +189,17 @@ class PropertyController {
       yield favorite.delete()
     }
 
+  for (let adType of adTypes) {  
+      console.log(adType) 
+      yield adType.delete()
+    }
+
     for (let image of images) {  
       const fs = require('fs');
       fs.unlink(image.path) 
       yield image.delete()
     }
-    yield adType.delete()
+
     yield property.delete()
     response.redirect('/');
   }
@@ -269,6 +273,37 @@ class PropertyController {
     })
   }
 
+  *ajaxDelete(request, response) {
+
+    const id = request.param('id')
+    const property = yield Property.find(id)
+    const favorites = yield Favorite.query().where('property_id', id).fetch()
+    const adTypes = yield AdType.query().where('property_id', id).fetch()
+    const images = yield Image.query().where('property_id', id).fetch()
+    if (!property) {
+      response.notFound('Property does not exist')
+      return
+    }
+
+    for (let favorite of favorites) {   
+      yield favorite.delete()
+    }
+
+  for (let adType of adTypes) {  
+      console.log(adType) 
+      yield adType.delete()
+    }
+
+    for (let image of images) {  
+      const fs = require('fs');
+      fs.unlink(image.path) 
+      yield image.delete()
+    }
+
+    yield property.delete()
+
+    response.ok({success: true});
+  }
 }
 
 module.exports = PropertyController
