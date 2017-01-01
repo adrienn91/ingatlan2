@@ -173,3 +173,61 @@ Webes Ide: cloud9
 - A kép feltöltő oldalon töltsünk fel egy tetszőleges képet
 - Lista oldalon megnézhetünk egy hirdetés részletes leírását
 - A részletes leírás felületen van lehetőségünk az adott hirdetést szerkeszteni és törölni
+
+# A szerveroldali alkalmazás progresszív fejlesztése kliensoldali JavaScript segítségével
+
+## Érintett fájlok
+
+- app
+    + Http
+        + Controllers
+            + FileController.js
+            + PropertyController.js
+            + UserController.js
+        + routes.js
+- public
+    + scripts
+        + ajaxFileUpload.js
+        + delete.js
+        + favoriteNumber.js
+        + gallery.js
+        + popup.js
+    + fileupload.css
+    + gallery.css
+    + reset.css
+- resources
+    + views
+        + fileUpload.njk
+        + layout.njk
+        + main.njk
+        + showFavorite.njk
+        + showProperty.njk
+        
+## Funkciók működése
+
+### Kedvencnek jelölt ingatlanok darabszáma (favoriteNumber.js):
+
+A showFavorite.njk oldalon lévő panel típusú elemeket számolja meg (és elmenti a db változóba), mely eredményét a h2 típusú bekezdés után jeleníti meg a következő formában: (${db} kedvenc)
+
+### Törlés (delete.js) [AJAX]:
+A showProperty.njk oldalon lévő Törlés gomb funkciójának felüldefiniálása. A felhasználó megerősítheti a törlés bizonyosságát egy modális segítségével.
+
+### Popup login (popup_login.js) [AJAX]:
+A layout.njk oldalon lévő Belépés gomb felüldefiniálása. A popup ablakban a login.njk formja jelenik meg.
+
+### Képfeltöltés (ajaxFileUpload.js) [AJAX]:
+A fileUpload.njk oldalon a képfeltöltés felüldefiniálása. A "kitallózott" kép automatikusan tárolásra kerül. Submit gomb elrejtése, ha elérhető a javaScript.
+
+#### Képnézegető (gallery.js):
+Az ingatlanok megtekintésénél a fényképre kattintás hatására megejelenik egy bezárható, lapozható képnézegető.
+
+# Tesztelés
+## Selenium IDE telepítése Firefox böngészőben:
+
+- https://addons.mozilla.org/hu/firefox/addon/selenium-ide/ oldalon Plugin hozzáadása a Firefoxhoz
+- Firefox újraindítása
+- Selenium IDE megnyitása
+- File/Open Test Suite - Tesztek megnyitása
+- Play Entire Test Suite gomb segítségével tesztek futtatása
+
+## Tesztesetek
