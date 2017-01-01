@@ -231,3 +231,33 @@ Az ingatlanok megtekintésénél a fényképre kattintás hatására megejelenik
 - Play Entire Test Suite gomb segítségével tesztek futtatása
 
 ## Tesztesetek
+### Regisztráció
+- Regisztráció link megnyomása
+- Név, email cím, jelszó és jelszó megerősítő mezők kitöltése
+- Submit gomb
+### Belépés
+- belépés gomb megnyomása
+- e-mail, jelszó kitöltése
+- submit gomb
+- ellenőrzés: Kilépés gomb megjelenése, Üdv, "név" szöveg
+### Új hirdetés feladása
+- Új hirdetés link megnyomása
+- Ürlap kitöltése adatokkal
+- Mentés és tovább gomb megnyomása
+- Fájlfeltöltésre navigálás, ahol képfeltöltés nélkül Jóváhagyás gomb megnyomása
+- Ellenőrzés: Cím mező szövege
+### Kedvencek
+- A létrehozott ingatlannál részletek gombra lépés
+- Kedvencek gomb megnyomása
+- Ell.: Kedvencek felületre navigálás és checkolás
+### Szerkeszés
+- A létrehozott ingatlannál részletek gombra lépés
+- Szerkesztés gomb megnyomása
+- Cím módosítása
+- Ell.,: Módosított cím megjelenik
+### Törlés:
+- A létrehozott ingatlan törlés
+- Felugró ablak: megerősítés
+### Kilépés
+- Kilépés link megnyomása
+- Ell.: Belépés link megjelenik
