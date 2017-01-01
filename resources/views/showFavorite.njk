@@ -1,5 +1,8 @@
 {% extends 'layout' %}
+{% block scripts %}
+<script src="/scripts/favoriteNumber.js"></script>
 
+{% endblock %}
 {% block content %}
 
 <h2>Kedvencek</h2>
@@ -12,8 +15,12 @@
         {% for favorite in favorites %}
           <li class="list-group-item clearfix">
               <div class="col-md-4 col-sm-6">
-              <img class="img-circle" src="{{ favorite.firstImage.image }}" alt="image"
-              width="300" height="150">
+            {% if favorite.firstImage.image == null %}
+                <img class="img-circle" src="/Image/default.png" width="300" height="150">
+            {% else %}
+                <img class="img-circle" src="{{ favorite.firstImage.image }}" alt="image"
+                width="300" height="150">
+            {% endif %}
               </div>
               <div class="col-md-3 col-sm-6">
               <p class="text-center">Város: {{ favorite.property.city }} </p></br>

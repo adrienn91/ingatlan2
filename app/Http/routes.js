@@ -1,12 +1,13 @@
 'use strict'
 
 const Route = use('Route')
+Route.on('/test').render('test')
 Route.get('/', 'PropertyController.index')
 Route.get('/advertisments/create', 'PropertyController.create').middleware('auth')
 Route.post('/advertisments/create', 'PropertyController.doCreate').middleware('auth')
 Route.get('/advertisments/:id', 'PropertyController.show')
 Route.get('/advertisments/create/:id/upload', 'FileController.show').middleware('auth')
-Route.put('/advertisments/create/upload/file', 'FileController.store').middleware('auth')
+Route.post('/advertisments/create/upload', 'FileController.store').middleware('auth')
 Route.get('/advertisments/create/upload/file/:id/delete', 'FileController.delete').middleware('auth')
 Route.delete('/advertisments/create/upload/file/:id', 'FileController.delete').middleware('auth')
 Route.get('/advertisments/:id/edit', 'PropertyController.edit').middleware('auth')
@@ -22,7 +23,9 @@ Route.get('/login', 'UserController.login')
 Route.post('/login', 'UserController.doLogin')
 Route.get('/logout', 'UserController.doLogout')
 
+Route.post('/test', 'FileController.store')
 Route.group('ajax', function () {
   Route.delete('/advertisments/:id/delete', 'PropertyController.ajaxDelete').middleware('auth')  
   Route.post('/login', 'UserController.ajaxLogin')
+  Route.post('/advertisments/create/upload', 'FileController.ajaxStore')
 }).prefix('/ajax')

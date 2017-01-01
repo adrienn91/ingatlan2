@@ -17,7 +17,9 @@ class FileController {
     const id = request.param('id')
     temp = id;
     const property = yield Property.find(id)
+
     const images = yield Image.query().where('property_id', id).fetch()
+
       if (request.currentUser.id !== property.user_id) {
         response.unauthorized('Nincs jog')
         return
@@ -67,15 +69,50 @@ class FileController {
     var data = fs.readFileSync(file.uploadPath()) 
     var base64 = new Buffer(data).toString('base64')
     var type = file.mimeType();
-    var prefix = "data:" + type + ";base64,";
+    var prefix = "data:" + type + ";base64,"; 
     
     image.property_id = temp
     image.image = (prefix + base64)
     image.path = file.uploadPath()
     yield image.save()
-
+ 
     response.redirect('/advertisments/create/' + temp + '/upload');  
   }
+
+ * ajaxStore(request, response) {
+    const id = request.currentUser.id 
+    const file = request.file('file', {
+        allowedExtensions: ['jpg', 'png', 'jpeg']
+    })
+    const image = new Image()
+    const property = yield Property.find(temp)
+
+    const filename = temp + file.clientName()
+
+   yield file.move(Helpers.storagePath('uploads'), filename)
+
+    if(!file.move()) {
+      response.ok({ success: false })
+      return
+    }
+    
+    const fs = require('fs');
+    var data = fs.readFileSync(file.uploadPath()) 
+    var base64 = new Buffer(data).toString('base64')
+    var type = file.mimeType();
+    var prefix = "data:" + type + ";base64,"; 
+    
+    image.property_id = temp
+    image.image = (prefix + base64)
+    image.path = file.uploadPath()
+    yield image.save()
+ 
+    response.ok({ success: true })
+    return
+
+    //response.redirect('/advertisments/create/' + temp + '/upload'); 
+  }
+
 
 }
 module.exports = FileController

@@ -1,0 +1,38 @@
+{% extends 'layout' %}
+
+{% block scripts %}
+<script src="/scripts/test.js"></script>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="/fileupload.css">
+{% endblock %}
+
+{% block content %}
+
+
+  {{ csrfField }}
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <span class="glyphicon glyphicon-cloud-upload"></span>
+            <h2>File Uploader</h2>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar"></div>
+            </div>
+                 {{ form.open({ action: 'FileController.store', files: true}) }}
+                   {{ csrfField }}
+			 <input class="btn btn-lg upload-btn" id="upload-btn" type="file" name="file"></br>
+       <noscript>
+       <input type="submit" name="submit" value="Submit">
+       </noscript>
+         {{ form.close() }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ <input id="upload-input" type="file" name="file"></br>
+{% endblock %}

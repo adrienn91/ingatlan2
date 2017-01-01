@@ -38,6 +38,10 @@ class PropertyController {
       response.notFound('Property does not exist')
       return
     }
+    const post = yield Image.query().where('property_id', id).first()
+    if(post != null) {
+           property.firstImage = post.toJSON()
+    }
     yield property.related('adTypes').load()
     yield property.related('images').load()
 
@@ -259,7 +263,7 @@ class PropertyController {
         if (filters.minPrice > 0) this.where('price', '>=', filters.minPrice)
         if (filters.maxPrice > 0) this.where('price', '<=', filters.maxPrice)
         if (filters.createdBy > 0) this.where('user_id', filters.createdBy)
-        if (filters.propertyAddress.length > 0) this.where('address', 'LIKE', `%${filters.propertyAddress}%`)
+        if (filters.propertyAddress.length > 0) this.where('city', 'LIKE', `%${filters.propertyAddress}%`)
       })
       .with('users')
       .paginate(page, 9)

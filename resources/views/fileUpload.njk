@@ -1,33 +1,44 @@
 {% extends 'layout' %}
+{% block scripts %}
+<script src="/scripts/ajaxFileUpload.js"></script>
+{% endblock %}
 
+{% block styles %}
+<link rel="stylesheet" href="/fileupload.css">
+{% endblock %}
 {% block content %}
 <div class="col-md-15">
 <h1>Képek feltöltése</h1>
+  {{ csrfField }}
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <span class="glyphicon glyphicon-cloud-upload"></span>
+            <h2>File Uploader</h2>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar"></div>
+            </div>
+                 {{ form.open({ action: 'FileController.store', files: true}) }}
+                   {{ csrfField }}
+			 <input class="btn btn-lg upload-btn" id="upload-btn" type="file" name="file"></br>
+       <noscript>
+       <input type="submit" name="submit" value="Submit">
+       </noscript>
+         {{ form.close() }}
+          </div>
+        </div>
+  </div>
 
-<div class="panel panel-default">
-  <div class="panel panel-danger">Képek feltöltése</div>
-   <div class="panel-body">
-    <span>Browse</span>
-     {{ form.open({ action: 'FileController.store', files: true}) }}
-      {{ csrfField }}
-      <div class="field">
-        {{ form.file('file') }}
-      </div>
-
-    {{ form.button('Submit', 'submit') }}
-
-  {{ form.close() }}
-</div>
-</div>
-</div>
 
 <h1>Eddig feltöltött képek:</h1>
-<div class="row">
+<div id="_row" class="_row">
   {% for image in images %}
   <div class="col-md-5 col-sm-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-         <a class="btn btn-primary" href="/advertisments/create/upload/file/{{image.id}}/delete" role="button">Töröl</a>
+         <a class="btn btn-primary" id="btnDelete" href="/advertisments/create/upload/file/{{image.id}}/delete" role="button">Töröl</a>
       </div>
       <ul class="list-group">
         <li class="list-group-item">
@@ -38,6 +49,6 @@
   </div>
   {% endfor %}
 </div>
-<a class="btn btn-info" href="/" role="button">Jóváhagyás</a>
 </div>
+<a class="btn btn-info" href="/" role="button">Jóváhagyás</a>
 {% endblock %}

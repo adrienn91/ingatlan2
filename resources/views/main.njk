@@ -1,7 +1,6 @@
 {% extends 'layout' %}
 {% block scripts %}
 <script src="/scripts/popup.js"></script>
-<script src="/scripts/autosuggest.js"></script>
 {% endblock %}
 {% block content %}
 
@@ -22,19 +21,23 @@
   <div class="panel panel-default">
     <div class="panel-heading">Kiemelt hirdetésink</div>
       <div class="panel-body">
-        <ul class="list-group">
+        <ul id="menu" class="list-group">
         {% for property in properties %}
-          <li class="list-group-item clearfix">
+          <li data-position="" class="list-group-item clearfix">
               <div class="col-md-4 col-sm-6">
+            {% if property.firstImage.image == null %}
+                <img class="img-circle" src="/Image/default.png" width="300" height="150">  
+            {% else %}
               <img class="img-circle" src="{{ property.firstImage.image }}" alt="image"
               width="300" height="150">
+            {% endif %}
               </div>
               <div class="col-md-3 col-sm-6">
               <p class="text-center">Város: {{ property.city }} </p></br>
               <p class="text-center">Cím: {{ property.address }} </p>
               </div>
               <div class="col-md-3 col-sm-6">
-              <p class="text-center">Ár: {{ property.price }} Ft</p></br>
+              <p id="ar" class="text-center">Ár: {{ property.price }} Ft</p></br>
               <p class="text-center">Terület: {{ property.size }} nm </p>
               </div>
               <div class="col-md-2 col-sm-6">
